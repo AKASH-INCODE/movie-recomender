@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-a&bbb9t+tulxn&40q(djklpsg5(!3d1^##!iy@fvuuajfo406k
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["movieseek.onrender.com", "127.0.0.1", "localhost"]
 
 
 # Application definition
