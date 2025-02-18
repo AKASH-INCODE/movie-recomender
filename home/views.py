@@ -8,8 +8,8 @@ def index(request):
 
 # model
 import pickle
-rec=pickle.load(open(r'D:\vs code works\python projects\ML\100-days-of-machine-learning-main\100-days-of-machine-learning-main\day18-pandas-dataframe-using-web-scraping\movie_list1.pkl','rb'))
-sim=pickle.load(open(r'D:\vs code works\python projects\ML\100-days-of-machine-learning-main\100-days-of-machine-learning-main\day18-pandas-dataframe-using-web-scraping\similarity1.pkl','rb'))
+rec=pickle.load(open(r'model/movie_list1.pkl','rb'))
+sim=pickle.load(open(r'model/similarity1.pkl','rb'))
 
 
 
