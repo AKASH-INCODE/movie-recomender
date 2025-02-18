@@ -1,0 +1,243 @@
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movie Recommender</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #333;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 80vh;
+      flex-direction: column;
+    }
+    .search-bar {
+      padding: 10px;
+      width: 300px;
+      font-size: 16px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .button {
+      padding: 10px 20px;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .button:hover {
+      background-color: #555;
+    }
+    .movie-list {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 40px;
+    }
+    .movie-item {
+      background-color: white;
+      width: 200px;
+      border-radius: 5px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      text-align: center;
+    }
+    .movie-item img {
+      width: 100%;
+      height: auto;
+    }
+    .movie-item h3 {
+      padding: 10px;
+      margin: 0;
+      background-color: #333;
+      color: white;
+    }
+    .movie-item p {
+      padding: 10px;
+      font-size: 14px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Movie Recommender</h1>
+  <p>Find your next favorite movie with our recommendations!</p>
+</header>
+
+<div class="container">
+  <form method="GET" action="{% url 'search_movie' %}">
+    <input type="text" name="query" class="search-bar" placeholder="Search for a movie..." required />
+    <button type="submit" class="button">Get Recommendations</button>
+  </form>
+
+  {% if recommended_movies %}
+  <div class="movie-list">
+    {% for movie in recommended_movies %}
+    <div class="movie-item">
+      {% if movie.poster %}
+        <img src="{{ movie.poster }}" alt="{{ movie.name }} Poster">
+      {% else %}
+        <img src="default-poster.jpg" alt="Poster not available">
+      {% endif %}
+      <h3>{{ movie.name }}</h3>
+      <p>A great movie you might enjoy!</p>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p>No recommendations found.</p>
+  {% endif %}
+</div>
+
+</body>
+<footer style="text-align: center; margin-top: 40px; padding: 20px; background-color: #333; color: white;">
+  <p>Thank you, Sudip VAI from AIML STCET, for your contributions AND HELP!</p>
+</footer>
+</html> {% endcomment %}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movie Recommender</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #333;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 80vh;
+      flex-direction: column;
+    }
+    .search-bar {
+      padding: 10px;
+      width: 300px;
+      font-size: 16px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .button {
+      padding: 10px 20px;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .button:hover {
+      background-color: #555;
+    }
+    .movie-list {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 40px;
+    }
+    .movie-item {
+      background-color: white;
+      width: 200px;
+      border-radius: 5px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      text-align: center;
+    }
+    .movie-item img {
+      width: 100%;
+      height: auto;
+    }
+    .movie-item h3 {
+      padding: 10px;
+      margin: 0;
+      background-color: #333;
+      color: white;
+    }
+    .movie-item p {
+      padding: 10px;
+      font-size: 14px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Movie Recommender</h1>
+  <p>Find your next favorite movie with our recommendations!</p>
+</header>
+
+<div class="container">
+  <form method="GET" action="{% url 'search_movie' %}">
+    <input type="text" name="query" class="search-bar" placeholder="Search for a movie..." required />
+    <button type="submit" class="button">Get Recommendations</button>
+  </form>
+
+  {% if recommended_movies %}
+  <div class="movie-list">
+    {% for movie in recommended_movies %}
+    <div class="movie-item">
+      {% if movie.poster %}
+        <img src="{{ movie.poster }}" alt="{{ movie.name }} Poster">
+      {% else %}
+        <img src="default-poster.jpg" alt="Poster not available">
+      {% endif %}
+      <h3>
+        <!-- Make the movie name a button that triggers a search for recommendations -->
+        <form method="GET" action="{% url 'search_movie' %}">
+          <input type="hidden" name="query" value="{{ movie.name }}">
+          <button type="submit" class="button">{{ movie.name }}</button>
+        </form>
+      </h3>
+      <p>A great movie you might enjoy!</p>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p>No recommendations found.</p>
+  {% endif %}
+</div>
+
+</body>
+<footer style="text-align: center; margin-top: 40px; padding: 20px; background-color: #333; color: white;">
+  <p>Thank you, Sudip VAI from AIML STCET, for your contributions AND HELP!</p>
+</footer>
+</html>
