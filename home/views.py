@@ -9,7 +9,7 @@ def index(request):
 # model
 import pickle
 rec=pickle.load(open(r'model/movie_list1.pkl','rb'))
-sim=pickle.load(open(r'model/similarity1.pkl','rb'))
+sim=pickle.load(open(r'model/indices.pkl','rb'))
 
 
 
